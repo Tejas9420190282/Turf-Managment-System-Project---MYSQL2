@@ -3,12 +3,12 @@
 
 const express = require('express');
 const colors = require('colors');
-const { dbConnectionPool } = require('./Config/Db');
+const { mySqlConnectionPool } = require('./Config/Db');
 const app = express();
 
 const PORT = 4545;
 
-dbConnectionPool.query("SELECT 1").then(() => {
+mySqlConnectionPool.query("SELECT 1").then(() => {
 
     console.log("turfProject Database connected Successfully".bgGreen);
     

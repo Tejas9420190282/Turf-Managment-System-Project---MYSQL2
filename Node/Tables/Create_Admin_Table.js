@@ -2,7 +2,7 @@
 // Tables/Create_Admin_Table.js
 
 
-const { dbConnectionPool } = require("../Config/Db");
+const { mySqlConnectionPool } = require("../Config/Db");
 
 const createAdminTable = async() => {
 
@@ -10,7 +10,7 @@ const createAdminTable = async() => {
         
         const query = `CREATE TABLE IF NOT EXISTS admin (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL UNIQUE, password VARCHAR(255) NOT NULL)`;
         
-        await dbConnectionPool.query(query);
+        await mySqlConnectionPool.query(query);
 
         console.log(`Admin table created Successfully`.bgGreen);
 
@@ -22,3 +22,7 @@ const createAdminTable = async() => {
 }
 
 createAdminTable();
+
+
+
+

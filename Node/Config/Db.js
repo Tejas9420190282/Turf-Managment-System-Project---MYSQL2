@@ -1,4 +1,6 @@
 
+// Db.js (Node)
+
 const mysql = require('mysql2/promise');
 
 const dbConnectionPool = mysql.createPool({

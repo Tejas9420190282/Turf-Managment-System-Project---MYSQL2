@@ -1,4 +1,5 @@
 
+// createUserTable.js (Node)
 
 const { mySqlConnectionPool } = require("../Config/Db");
 

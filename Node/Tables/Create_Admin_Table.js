@@ -1,5 +1,5 @@
 
-// Tables/Create_Admin_Table.js
+// Tables/Create_Admin_Table.js (Node)
 
 
 const { mySqlConnectionPool } = require("../Config/Db");
@@ -22,6 +22,7 @@ const createAdminTable = async() => {
 }
 
 createAdminTable();
+
 
 
 

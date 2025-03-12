@@ -40,7 +40,7 @@ const login_Controller = async (req, res) => {
                     success: true,
                     message: "Successfully Logged in!",
                     token,
-                    redirect: "/admin-home"
+                    redirect: "/admin"
                 });
                 
             } else {
@@ -87,7 +87,7 @@ const login_Controller = async (req, res) => {
                 
                 success : true,
                 message : "Successfully Logged in.....!",
-                redirect : "/user-home"
+                redirect : "/user"
             })
 
         

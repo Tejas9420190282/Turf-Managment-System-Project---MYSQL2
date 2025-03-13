@@ -3,8 +3,9 @@
 // AdminDashboard.jsx (React)
 
 import React from 'react';
-import AdminNavbar from './AdminNavbar';
+
 import Card from './Card';
+import AdminNavbar from './Admin_Navbar';
 
 const AdminDashboard = () => {
   return (

@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const { signUp_Router } = require("./Router/SignUp_Router");
 const cors = require("cors");
 const { login_Router } = require("./Router/Login_Router");
+const { Add_Turf_Submit_Router } = require("./Router/Admin/Add_Turf_Submit_Router");
 
 const app = express();
 
@@ -17,6 +18,9 @@ app.use(express.json());
 app.use(signUp_Router);
 app.use(login_Router);
 
+
+// Admin
+app.use(Add_Turf_Submit_Router);
 
 const PORT = 4545;
 

@@ -5,7 +5,9 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
-import AdminDashboard from '../../../Turf Managment System Project - sequelize/React/src/components/Admin/AdminDashboard'
+import AdminDashboard from './components/Admin/AdminDashboard'
+import Add_Turf from './components/Admin/Add_Turf'
+
 
 function App() {
 
@@ -24,8 +26,12 @@ function App() {
       path : "/admin",
       element : <><AdminDashboard /></>
     },
+    {
+      path : "/admin/add-turn",
+      element : <><Add_Turf /></>
+    },
 
-
+    
 
     // User Scetion
     {

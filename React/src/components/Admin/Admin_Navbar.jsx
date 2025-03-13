@@ -1,4 +1,9 @@
+
+// AdminNavbar.jsx (React)
+
 import React from 'react';
+import { Link } from "react-router-dom";
+
 
 const AdminNavbar = () => {
   return (
@@ -18,16 +23,22 @@ const AdminNavbar = () => {
         <nav>
           <ul>
             <li className="hover:bg-gray-700">
-              <a href="#home" className="block p-4">Admin Home</a>
+              <Link to="/admin/home" className="block p-4">Admin Home</Link>
             </li>
             <li className="hover:bg-gray-700">
-              <a href="#bookings" className="block p-4">Add Turf</a>
+              <Link to="/admin/add-turn" className="block p-4">Add Turf</Link>
             </li>
             <li className="hover:bg-gray-700">
-              <a href="#turfs" className="block p-4">Remove Turf</a>
+              <Link to="/admin/update-turn" className="block p-4">Update Turf</Link>
             </li>
             <li className="hover:bg-gray-700">
-              <a href="#reports" className="block p-4">View Bookings</a>
+              <Link to="/admin/remove-turf" className="block p-4">Remove Turf</Link>
+            </li>
+            <li className="hover:bg-gray-700">
+              <Link to="/admin/view-all-turf" className="block p-4">View All Turfs</Link>
+            </li>
+            <li className="hover:bg-gray-700">
+              <Link to="/admin/view-booking-using-turf-location" className="block p-4">View Bookings</Link>
             </li>
           </ul>
         </nav>

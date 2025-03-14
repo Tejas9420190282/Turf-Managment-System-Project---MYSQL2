@@ -9,6 +9,8 @@ import AdminDashboard from './components/Admin/AdminDashboard'
 import Add_Turf from './components/Admin/Add_Turf'
 import Turf_Result from './components/Admin/Turf_Result'
 import ViewAllTurfList from './components/Admin/View_All_Turf_List'
+import FindTurfByArea from './components/Admin/Find_Turf_Using_Area'
+import Final_Turf_Update from './components/Admin/Final_Turf_Update'
 
 
 
@@ -44,6 +46,14 @@ function App() {
     {
       path : "/admin/view-all-turf",
       element : <><ViewAllTurfList /></>
+    },
+    {
+      path : "/admin/search-area-turf/:area",
+      element : <><FindTurfByArea /></>
+    },
+    {
+      path :"/admin/search-area-turf/:area/final-update-turf",
+      element : <><Final_Turf_Update /></>
     },
 
     

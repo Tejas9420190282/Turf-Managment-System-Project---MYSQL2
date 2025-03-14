@@ -31,7 +31,7 @@ function ViewAllTurfList() {
 
     // Function to handle Update Turf button click
     const handleUpdateTurf = () => {
-        navigate("/admin/update-turf"); // Redirect to the update turf page
+        navigate("/admin/search-area-turf/:area"); // Redirect to the update turf page
     };
 
     // Display loading state

@@ -32,7 +32,7 @@ const AdminNavbar = () => {
               <Link to="/admin/view-all-turf" className="block p-4">View All Turfs</Link>
             </li>
             <li className="hover:bg-gray-700">
-              <Link to="/admin/update-turf" className="block p-4">Update Turf</Link>
+              <Link to="/admin/search-area-turf/:area" className="block p-4">Update Turf According to Area</Link>
             </li>
             <li className="hover:bg-gray-700">
               <Link to="/admin/remove-turf" className="block p-4">Remove Turf</Link>

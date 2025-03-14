@@ -11,6 +11,7 @@ import Turf_Result from './components/Admin/Turf_Result'
 import ViewAllTurfList from './components/Admin/View_All_Turf_List'
 import FindTurfByArea from './components/Admin/Find_Turf_Using_Area'
 import Final_Turf_Update from './components/Admin/Final_Turf_Update'
+import Remove_Turf from './components/Admin/Remove_Turf'
 
 
 
@@ -55,7 +56,10 @@ function App() {
       path :"/admin/search-area-turf/:area/final-update-turf",
       element : <><Final_Turf_Update /></>
     },
-
+    {
+      path :"/admin/remove-turf",
+      element : <><Remove_Turf /></>
+    },
     
     
     

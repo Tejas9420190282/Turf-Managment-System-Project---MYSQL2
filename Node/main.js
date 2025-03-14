@@ -11,6 +11,7 @@ const { Add_Turf_Submit_Router } = require("./Router/Admin/Add_Turf_Submit_Route
 const { View_All_Turf_List_Router } = require("./Router/Admin/View_All_Turf_List_Router");
 const { find_Turf_Using_Area_Router } = require("./Router/Admin/Find_Turf_Using_Area_Router");
 const { Final_Update_Turf_Router } = require("./Router/Admin/Update_Turf_Router");
+const { delete_Turf_Router } = require("./Router/Admin/Delete_Turf_Router");
 
 
 
@@ -29,6 +30,8 @@ app.use(Add_Turf_Submit_Router);
 app.use(View_All_Turf_List_Router);
 app.use(find_Turf_Using_Area_Router);
 app.use(Final_Update_Turf_Router);
+app.use(delete_Turf_Router);
+
 
 const PORT = 4545;
 

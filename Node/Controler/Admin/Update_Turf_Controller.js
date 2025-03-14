@@ -4,6 +4,48 @@
 const { mySqlConnectionPool } = require("../../Config/Db");
 
 const Final_Update_Turf_Controler = async (req, res) => {
+    try {
+        const { turf_name, area, city, pincode, light, price_hr, equipment, openingTime, closingTime } = req.body;
+
+        console.log("Request Body:", req.body); // Debugging line
+
+        // Validate required fields
+        if (!turf_name || !area || !city || !pincode || !light || !price_hr || !equipment || !openingTime || !closingTime) {
+            console.log("All inputs are Mandatory...".bgGreen);
+            return res.status(400).json({
+                success: false,
+                message: "All inputs are Mandatory...",
+            });
+        }
+
+        // Update the turf details
+        const [row] = await mySqlConnectionPool.query(
+            "UPDATE turf SET turf_name = ?, city = ?, pincode = ?, light = ?, price_hr = ?, equipment = ?, openingTime = ?, closingTime = ? WHERE area=?",
+            [turf_name, city, pincode, light, price_hr, equipment, openingTime, closingTime, area]
+        );
+
+        console.log("Successfully Updated the Values");
+        res.status(200).json({
+            success: true,
+            message: "Successfully Updated the Values",
+            row: row,
+            redirect: "/updated-successfull",
+        });
+    } catch (error) {
+        console.log(`Error in Final_Update_Turf_Controler API : ${error.message}`.bgRed);
+        res.status(500).json({
+            success: false,
+            message: `Error in Final_Update_Turf_Controler API : ${error.message}`,
+        });
+    }
+};
+
+exports.Final_Update_Turf_Controler = Final_Update_Turf_Controler;
+
+/* 
+const { mySqlConnectionPool } = require("../../Config/Db");
+
+const Final_Update_Turf_Controler = async (req, res) => {
 
     try {
 
@@ -49,3 +91,4 @@ const Final_Update_Turf_Controler = async (req, res) => {
 }
 
 exports.Final_Update_Turf_Controler = Final_Update_Turf_Controler
+ */

@@ -83,10 +83,14 @@ const login_Controller = async (req, res) => {
 
         console.log("Successfully Logged in.....!".bgGreen);
 
+        console.log(user.name);
+        
+
             return res.status(200).json({
                 
                 success : true,
                 message : "Successfully Logged in.....!",
+                user : user.name,
                 redirect : "/user"
             })
 

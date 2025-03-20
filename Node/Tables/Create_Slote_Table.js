@@ -1,3 +1,6 @@
+
+// createSloteTable.js (Node)
+
 const { mySqlConnectionPool } = require("../Config/Db");
 
 const createSloteTable = async () => {

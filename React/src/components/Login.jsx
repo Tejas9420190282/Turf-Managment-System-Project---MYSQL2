@@ -1,3 +1,6 @@
+
+// Login.jsx
+
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +12,8 @@ function Login() {
 
     const navigate = useNavigate();
 
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -18,8 +23,11 @@ function Login() {
                 { email, password },
                 { headers: { "Content-Type": "application/json" } }
             );
+            
+        
 
             if (response.data.redirect) {
+                sessionStorage.setItem("Username", response.data.user)
                 navigate(response.data.redirect);
             } else {
                 setError("Login failed, please try again.");

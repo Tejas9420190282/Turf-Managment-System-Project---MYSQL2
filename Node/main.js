@@ -12,6 +12,8 @@ const { View_All_Turf_List_Router } = require("./Router/Admin/View_All_Turf_List
 const { find_Turf_Using_Area_Router } = require("./Router/Admin/Find_Turf_Using_Area_Router");
 const { Final_Update_Turf_Router } = require("./Router/Admin/Update_Turf_Router");
 const { delete_Turf_Router } = require("./Router/Admin/Delete_Turf_Router");
+const { search_Available_Turf_Router } = require("./Router/User/Search_Available_Turf_Router");
+const { selected_Available_Slote_Router } = require("./Router/User/Selected_Available_Slote_Router");
 
 
 
@@ -31,6 +33,11 @@ app.use(View_All_Turf_List_Router);
 app.use(find_Turf_Using_Area_Router);
 app.use(Final_Update_Turf_Router);
 app.use(delete_Turf_Router);
+
+
+// User
+app.use(search_Available_Turf_Router);
+app.use(selected_Available_Slote_Router);
 
 
 const PORT = 4545;

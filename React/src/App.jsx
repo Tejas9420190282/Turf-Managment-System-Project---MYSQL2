@@ -1,4 +1,5 @@
-// App.jsx 
+
+// App.jsx  (React)
 
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -79,6 +80,12 @@ function App() {
       path : "/user/search-available-turf/selected-available-slote/:sloteid/turfid/:turfid",
       element : <><Selected_Slote /></>
     },
+    {
+      path : "/success-booking",
+      element : <></>
+    },
+
+    
   ])  
 
   return (

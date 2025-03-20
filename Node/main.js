@@ -14,6 +14,8 @@ const { Final_Update_Turf_Router } = require("./Router/Admin/Update_Turf_Router"
 const { delete_Turf_Router } = require("./Router/Admin/Delete_Turf_Router");
 const { search_Available_Turf_Router } = require("./Router/User/Search_Available_Turf_Router");
 const { selected_Available_Slote_Router } = require("./Router/User/Selected_Available_Slote_Router");
+const { payment_Router } = require("./Router/User/Payment_Router");
+const { verifyPaymentRouter } = require("./Router/User/verify_Payment_Router");
 
 
 
@@ -38,7 +40,8 @@ app.use(delete_Turf_Router);
 // User
 app.use(search_Available_Turf_Router);
 app.use(selected_Available_Slote_Router);
-
+app.use(payment_Router)
+app.use(verifyPaymentRouter);
 
 const PORT = 4545;
 

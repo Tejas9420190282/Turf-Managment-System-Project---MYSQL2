@@ -1,3 +1,5 @@
+
+
 // Selected_Slote.js (React)
 
 import axios from "axios";
@@ -5,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function Selected_Slote() {
-    
     const { sloteid, turfid } = useParams();
     const [turfData, setTurfData] = useState(null);
     const [name, setName] = useState("");
@@ -31,7 +32,7 @@ function Selected_Slote() {
 
         if (light === "Yes") {
             total = total + 100;
-        } 
+        }
 
         if (equipment === "Yes") {
             total = total + 100;
@@ -44,7 +45,7 @@ function Selected_Slote() {
         setLight(val);
         calculateTotalPrice(basePrice, val, equipment);
     };
-    
+
     const handleEquipmentChange = (val) => {
         setEquipment(val);
         calculateTotalPrice(basePrice, light, val);
@@ -53,14 +54,14 @@ function Selected_Slote() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post(
+                const response1 = await axios.post(
                     "http://localhost:4545/selected-available-slote",
                     { sloteid, turfid }
                 );
-    
-                if (response.data.success) {
-                    const data = response.data.booked_Slote[0];
-    
+
+                if (response1.data.success) {
+                    const data = response1.data.booked_Slote[0];
+
                     setTurfData(data);
                     setSlote_Id(data.slote_id);
                     setTurf_Id(data.TURF_Id);
@@ -73,18 +74,93 @@ function Selected_Slote() {
                     setCity(data.city);
                     setPin(data.pincode);
                     setBasePrice(data.price_hr);
-    
+
                     // Calculate initial total price
-                    calculateTotalPrice(data.price_hr, data.light, data.equipment);
+                    calculateTotalPrice(
+                        data.price_hr,
+                        data.light,
+                        data.equipment
+                    );
                     setDate(Booking_Date);
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
-    
+
         fetchData();
     }, [sloteid, turfid]);
+
+    const handlePayment = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response2 = await axios.post(
+                "http://localhost:4545/payment",
+                {
+                    turfData,
+                    name,
+                    contact,
+                    slote_id,
+                    turf_id,
+                    start_time,
+                    end_time,
+                    light,
+                    equipment,
+                    area,
+                    city,
+                    pin,
+                    basePrice,
+                    totalPrice,
+                    turfName,
+                    date,
+                }
+            );
+
+            const { order } = response2.data;
+
+            const options = {
+                key: "rzp_test_6Pg8m8ifI60Xmi", // Your Razorpay key ID
+                amount: order.amount,
+                currency: order.currency,
+                name: "Turf Booking",
+                description: "Booking for selected slot",
+                order_id: order.id,
+                handler: async function (response) {
+                    // Step 3: Verify payment on the backend
+                    const verifyResponse = await axios.post(
+                        "http://localhost:4545/payment/verify",
+                        {
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_signature: response.razorpay_signature,
+                        }
+                    );
+
+                    if (verifyResponse.data.success) {
+                        alert("Payment successful!");
+                        // Redirect or show success message
+                        window.location.href = "/success-booking";
+                    } else {
+                        alert("Payment verification failed.");
+                    }
+                },
+                prefill: {
+                    name, // Prefill customer name
+                    contact, // Prefill customer phone number
+                },
+                theme: {
+                    color: "#3399cc",
+                },
+            };
+
+            const rzp = new window.Razorpay(options); // Use window.Razorpay
+            rzp.open();
+        } catch (error) {
+            console.error("Error during payment:", error);
+            alert("Payment failed. Please try again.");
+        }
+    };
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg">
@@ -92,7 +168,7 @@ function Selected_Slote() {
                 Selected Slot Details
             </h2>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handlePayment}>
                 {/* Slote ID */}
                 <div>
                     <label className="block text-gray-300">Slote ID:</label>
@@ -292,7 +368,7 @@ function Selected_Slote() {
                     type="submit"
                     className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-2 rounded mt-4"
                 >
-                    Confirm Booking
+                    Pay Now
                 </button>
             </form>
         </div>

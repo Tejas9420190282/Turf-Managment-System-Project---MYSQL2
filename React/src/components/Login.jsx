@@ -1,21 +1,27 @@
 
 // Login.jsx
-
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
-
-    
+    const location = useLocation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!email || !password) {
+            setError("Please fill in all fields.");
+            return;
+        }
+
+        setLoading(true);
 
         try {
             const response = await axios.post(
@@ -23,17 +29,20 @@ function Login() {
                 { email, password },
                 { headers: { "Content-Type": "application/json" } }
             );
-            
-        
 
             if (response.data.redirect) {
-                sessionStorage.setItem("Username", response.data.user)
-                navigate(response.data.redirect);
+                sessionStorage.setItem("Username", response.data.user);
+                sessionStorage.setItem("authToken", response.data.token);
+
+                const redirectPath = location.state?.from || response.data.redirect;
+                navigate(redirectPath);
             } else {
                 setError("Login failed, please try again.");
             }
         } catch (err) {
             setError(err.response?.data?.message || "Something went wrong!");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -75,13 +84,17 @@ function Login() {
 
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition"
+                        className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition flex justify-center items-center"
+                        disabled={loading}
                     >
-                        Login
+                        {loading ? (
+                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                        ) : (
+                            "Login"
+                        )}
                     </button>
                 </form>
 
-                {/* 🔹 SignUp Redirect Link */}
                 <p className="text-sm text-gray-600 mt-4 text-center">
                     Don't have an account?{" "}
                     <span 
@@ -97,3 +110,4 @@ function Login() {
 }
 
 export default Login;
+

@@ -1,22 +1,14 @@
-import React, { useEffect } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+// ProtectedRoute.jsx
+import { Navigate, Outlet } from 'react-router-dom';
 
-function Protected_Route({ isAuthenticated, redirectPath = "/" }) {
-    const location = useLocation();
+const ProtectedRoute = ({ isAuthenticated, redirectPath = '/', children }) => {
+  if (!isAuthenticated) {
+    // Redirect to the login page if not authenticated
+    return <Navigate to={redirectPath} replace />;
+  }
 
-    useEffect(() => {
-        // Re-check authentication status whenever the route changes
-        if (!isAuthenticated) {
-            console.log("User is not authenticated. Redirecting to login...");
-        }
-    }, [location, isAuthenticated]);
+  // Render the children or nested routes
+  return children ? children : <Outlet />;
+};
 
-    if (!isAuthenticated) {
-        return <Navigate to={redirectPath} replace />;
-    }
-
-    // If the user is authenticated, render the child routes
-    return <Outlet />;
-}
-
-export default Protected_Route;
+export default ProtectedRoute;

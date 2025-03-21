@@ -18,6 +18,7 @@ const { selected_Available_Slote_Router } = require("./Router/User/Selected_Avai
 const { payment_Router } = require("./Router/User/Payment_Router");
 const { verifyPaymentRouter } = require("./Router/User/verify_Payment_Router");
 const { generate_PDF_Router } = require("./Router/User/Generate_PDF_Router");
+const { View_Booking_Using_Player_Id_Router } = require("./Router/User/View_Booking_Using_Player_Id_Router");
 
 
 
@@ -45,6 +46,8 @@ app.use(selected_Available_Slote_Router);
 app.use(payment_Router)
 app.use(verifyPaymentRouter);
 app.use(generate_PDF_Router);
+app.use(View_Booking_Using_Player_Id_Router);
+
 
 const PORT = 4545;
 

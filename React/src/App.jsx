@@ -16,6 +16,7 @@ import User_Dashboard from './components/User/User_Dashboard'
 import Search_Available_Turf from './components/User/Search_Available_Turf'
 import Selected_Slote from './components/User/Selected_Slote'
 import Success_Booking from './components/User/Success_Booking'
+import View_Player_Data from './components/User/View_Player_Data'
 
 
 
@@ -85,7 +86,10 @@ function App() {
       path : "/success-booking",
       element : <><Success_Booking /></>
     },
-
+    {
+      path : "/user/view-booking",
+      element : <><View_Player_Data /></>
+    },
     
   ])  
 

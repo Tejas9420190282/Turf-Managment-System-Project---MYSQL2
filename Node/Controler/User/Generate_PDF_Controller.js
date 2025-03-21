@@ -7,6 +7,7 @@ const PDFDocument = require("pdfkit");
 const generate_PDF_Controller = async (req, res) => {
     const {
         slote_id,
+        turf_id,
         name,
         contact,
         turfName,
@@ -39,6 +40,7 @@ const generate_PDF_Controller = async (req, res) => {
         doc.fontSize(25).text("Booking Details", { align: "center" });
         doc.moveDown();
         doc.fontSize(15).text(`Slote number : ${slote_id}`);
+        doc.fontSize(15).text(`Turf number : ${turf_id}`);
         doc.fontSize(15).text(`Player Name: ${name}`);
         doc.text(`Contact: ${contact}`);
         doc.text(`Turf Name: ${turfName}`);

@@ -143,6 +143,7 @@ function Selected_Slote() {
                         const pdfResponse = await axios.post(
                             "http://localhost:4545/generate-pdf",
                             {
+                                turf_id,
                                 slote_id,
                                 name,
                                 contact,

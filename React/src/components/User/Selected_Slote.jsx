@@ -1,5 +1,4 @@
 
-
 // Selected_Slote.js (React)
 
 import axios from "axios";
@@ -93,7 +92,7 @@ function Selected_Slote() {
 
     const handlePayment = async (e) => {
         e.preventDefault();
-
+    
         try {
             const response2 = await axios.post(
                 "http://localhost:4545/payment",
@@ -116,9 +115,9 @@ function Selected_Slote() {
                     date,
                 }
             );
-
+    
             const { order } = response2.data;
-
+    
             const options = {
                 key: "rzp_test_6Pg8m8ifI60Xmi", // Your Razorpay key ID
                 amount: order.amount,
@@ -136,9 +135,54 @@ function Selected_Slote() {
                             razorpay_signature: response.razorpay_signature,
                         }
                     );
-
+    
                     if (verifyResponse.data.success) {
                         alert("Payment successful!");
+    
+                        // Generate and download PDF
+                        const pdfResponse = await axios.post(
+                            "http://localhost:4545/generate-pdf",
+                            {
+                                slote_id,
+                                name,
+                                contact,
+                                turfName,
+                                city,
+                                area,
+                                pin,
+                                date,
+                                start_time,
+                                end_time,
+                                light,
+                                equipment,
+                                totalPrice,
+                            },
+                            { responseType: "blob" } // Important: Set responseType to 'blob'
+                        );
+    
+                        if (pdfResponse.data) {
+                            // Create a Blob from the PDF Stream
+                            const file = new Blob([pdfResponse.data], { type: "application/pdf" });
+    
+                            // Create a link element
+                            const fileURL = URL.createObjectURL(file);
+                            const link = document.createElement("a");
+                            link.href = fileURL;
+                            link.setAttribute("download", `booking-details-${slote_id}.pdf`);
+                            document.body.appendChild(link);
+    
+                            // Trigger the download
+                            link.click();
+    
+                            // Clean up
+                            URL.revokeObjectURL(fileURL);
+                            link.remove();
+    
+                            console.log("PDF downloaded successfully");
+                        } else {
+                            console.error("PDF generation failed");
+                        }
+    
                         // Redirect or show success message
                         window.location.href = "/success-booking";
                     } else {
@@ -153,7 +197,7 @@ function Selected_Slote() {
                     color: "#3399cc",
                 },
             };
-
+    
             const rzp = new window.Razorpay(options); // Use window.Razorpay
             rzp.open();
         } catch (error) {

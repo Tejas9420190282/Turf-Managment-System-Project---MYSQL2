@@ -1,3 +1,4 @@
+
 // main.js (Node)
 
 const express = require("express");
@@ -16,6 +17,7 @@ const { search_Available_Turf_Router } = require("./Router/User/Search_Available
 const { selected_Available_Slote_Router } = require("./Router/User/Selected_Available_Slote_Router");
 const { payment_Router } = require("./Router/User/Payment_Router");
 const { verifyPaymentRouter } = require("./Router/User/verify_Payment_Router");
+const { generate_PDF_Router } = require("./Router/User/Generate_PDF_Router");
 
 
 
@@ -42,6 +44,7 @@ app.use(search_Available_Turf_Router);
 app.use(selected_Available_Slote_Router);
 app.use(payment_Router)
 app.use(verifyPaymentRouter);
+app.use(generate_PDF_Router);
 
 const PORT = 4545;
 

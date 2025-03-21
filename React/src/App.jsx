@@ -15,6 +15,7 @@ import Remove_Turf from './components/Admin/Remove_Turf'
 import User_Dashboard from './components/User/User_Dashboard'
 import Search_Available_Turf from './components/User/Search_Available_Turf'
 import Selected_Slote from './components/User/Selected_Slote'
+import Success_Booking from './components/User/Success_Booking'
 
 
 
@@ -82,7 +83,7 @@ function App() {
     },
     {
       path : "/success-booking",
-      element : <></>
+      element : <><Success_Booking /></>
     },
 
     

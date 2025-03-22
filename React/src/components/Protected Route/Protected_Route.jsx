@@ -12,3 +12,4 @@ const ProtectedRoute = ({ isAuthenticated, redirectPath = '/', children }) => {
 };
 
 export default ProtectedRoute;
+

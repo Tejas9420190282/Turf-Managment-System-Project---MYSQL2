@@ -22,6 +22,7 @@ const { View_Booking_Using_Player_Id_Router } = require("./Router/User/View_Book
 const { forget_Password_Router } = require("./Router/forgot_Password_Router");
 const { reset_Password_Router } = require("./Router/reset_Password_Router");
 const { get_Reset_Password_Page_Router } = require("./Router/get_Reset_Password_Page_Router");
+const { view_Booking_Using_TurfId_Router } = require("./Router/Admin/View_Booking_Using_TufId_Router");
 
 
 
@@ -45,7 +46,7 @@ app.use(View_All_Turf_List_Router);
 app.use(find_Turf_Using_Area_Router);
 app.use(Final_Update_Turf_Router);
 app.use(delete_Turf_Router);
-
+app.use(view_Booking_Using_TurfId_Router);
 
 // User
 app.use(search_Available_Turf_Router);

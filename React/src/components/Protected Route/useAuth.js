@@ -1,18 +1,22 @@
-
 // useAuth.js
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect } from "react";
 
 const useAuth = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(
+        !!localStorage.getItem("authToken")
+    );
 
-  useEffect(() => {
-    // Check if the user is authenticated (e.g., by checking localStorage)
-    const token = localStorage.getItem('authToken');
-    setIsAuthenticated(!!token);
-  }, []);
+    useEffect(() => {
+        const handleStorageChange = () => {
+            setIsAuthenticated(!!localStorage.getItem("authToken"));
+        };
 
-  return isAuthenticated;
+        window.addEventListener("storage", handleStorageChange);
+        return () => window.removeEventListener("storage", handleStorageChange);
+    }, []);
+
+    return isAuthenticated;
 };
 
 export default useAuth;
-

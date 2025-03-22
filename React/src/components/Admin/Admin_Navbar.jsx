@@ -39,7 +39,7 @@ const AdminNavbar = () => {
             </li>
             
             <li className="hover:bg-gray-700">
-              <Link to="/admin/view-booking-using-turf-location" className="block p-4">View Bookings</Link>
+              <Link to="/admin/view-booking-using-turf-id" className="block p-4">View Bookings</Link>
             </li>
             <li className="hover:bg-gray-700 ml-14">
               <Link to="/" className="flex  gap-2 p-4">

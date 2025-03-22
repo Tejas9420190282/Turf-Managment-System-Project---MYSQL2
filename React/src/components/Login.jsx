@@ -25,6 +25,9 @@ function Login() {
 
         setLoading(true);
 
+         // Clear any existing authentication token before login
+        localStorage.removeItem("authToken"); 
+
         try {
             const response = await axios.post(
                 "http://localhost:4545/login-submit",
@@ -34,7 +37,8 @@ function Login() {
 
             if (response.data.redirect) {
                 sessionStorage.setItem("Username", response.data.user);
-                sessionStorage.setItem("authToken", response.data.token);
+                
+                localStorage.setItem("authToken", response.data.token);
 
                 toast.success("Login Successful!");
 

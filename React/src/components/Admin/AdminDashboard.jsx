@@ -24,18 +24,10 @@ const AdminDashboard = () => {
           {/* Card 1: Total Number of Turfs */}
           <Card title="Total Number of Turfs" value="150" />
 
-          {/* Card 2: Total Number of Bookings */}
-          <Card title="Total Number of Bookings" value="320" />
-
-          {/* Card 3: Total Revenue Generated */}
-          <Card title="Total Revenue Generated" value="$12,500" />
-
           {/* Card 4: Upcoming Bookings */}
           <Card title="Upcoming Bookings">
             <ul className="mt-2">
-              <li>Booking 1: 10/15/2023</li>
-              <li>Booking 2: 10/16/2023</li>
-              <li>Booking 3: 10/17/2023</li>
+              
             </ul>
           </Card>
         </section>

@@ -23,7 +23,7 @@ const AdminNavbar = () => {
         <nav>
           <ul>
             <li className="hover:bg-gray-700">
-              <Link to="/admin/home" className="block p-4">Admin Home</Link>
+              <Link to="/admin" className="block p-4">Admin Home</Link>
             </li>
             <li className="hover:bg-gray-700">
               <Link to="/admin/add-turn" className="block p-4">Add Turf</Link>

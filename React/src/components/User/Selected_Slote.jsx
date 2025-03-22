@@ -4,6 +4,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Selected_Slote() {
     const { sloteid, turfid } = useParams();
@@ -137,7 +138,7 @@ function Selected_Slote() {
                     );
     
                     if (verifyResponse.data.success) {
-                        alert("Payment successful!");
+                        toast.success("Payment successful!");
     
                         // Generate and download PDF
                         const pdfResponse = await axios.post(
@@ -187,7 +188,7 @@ function Selected_Slote() {
                         // Redirect or show success message
                         window.location.href = "/success-booking";
                     } else {
-                        alert("Payment verification failed.");
+                        toast.error("Payment verification failed.");
                     }
                 },
                 prefill: {
@@ -203,7 +204,7 @@ function Selected_Slote() {
             rzp.open();
         } catch (error) {
             console.error("Error during payment:", error);
-            alert("Payment failed. Please try again.");
+            toast.error("Payment failed. Please try again.");
         }
     };
 

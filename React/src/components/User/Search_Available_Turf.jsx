@@ -4,6 +4,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Search_Available_Turf() {
     // Form fields
@@ -47,7 +48,7 @@ function Search_Available_Turf() {
     const handleSelectSlot = (turfId, sloteId) => {
         console.log(`Selected Turf ID: ${turfId}, Slot ID: ${sloteId}`);
         // Add your logic here to handle slot selection (e.g., redirect to booking page)
-        alert(`Selected Turf ID: ${turfId}, Slot ID: ${sloteId}`);
+        toast.success(`Selected Turf ID: ${turfId}, Slot ID: ${sloteId}`);
 
         navigate(`/user/search-available-turf/selected-available-slote/${sloteId}/turfid/${turfId}`);
     };

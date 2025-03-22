@@ -3,6 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Remove_Turf() {
     const [area, setArea] = useState("");
@@ -19,7 +20,7 @@ function Remove_Turf() {
             });
 
             if (response.data.success) {
-                alert("Turf Deleted Successfully");
+                toast.success("Turf Deleted Successfully");
                 navigate("/admin"); // Redirect to admin page
             } else {
                 setError("Failed to delete turf. Please try again.");

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function SignUp() {
     const [name, setName] = useState("");
@@ -25,14 +26,20 @@ function SignUp() {
 
             if (response.data.success) {
                 setMessage("Account created successfully!");
-                alert("Account Created Successfully");
-                navigate("/login");
+                toast.success("Account Created Successfully");
+                navigate("/");
+                
             } else {
                 setMessage(response.data.message || "Something went wrong.");
+
+                toast.error(`${message}`);
             }
         }
         catch (error) {
             setMessage(error.response?.data?.message || "Something went wrong.");
+
+            toast.error("Something went wrong.");
+
             console.error("Error during signup:", error.message);
         }
     };

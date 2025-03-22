@@ -1,5 +1,5 @@
 // App.jsx
-import './App.css';
+
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
@@ -17,6 +17,8 @@ import Success_Booking from './components/User/Success_Booking';
 import View_Player_Data from './components/User/View_Player_Data';
 import ProtectedRoute from './components/Protected Route/Protected_Route';
 import useAuth from './components/Protected Route/useAuth';
+import ForgotPassword from './components/Forget_Password';
+import ResetPassword from './components/Reset_Password';
 
 
 function App() {
@@ -31,6 +33,15 @@ function App() {
       path: '/',
       element: <Login />,
     },
+    { 
+      path: '/forgot-password',
+      element: <ForgotPassword />,
+    },
+    {
+      path: '/reset-password/:token',
+      element: <ResetPassword />,
+    },
+    
     {
       element: <ProtectedRoute isAuthenticated={isAuthenticated} />, // Wrap protected routes
       children: [
@@ -64,6 +75,7 @@ function App() {
           element: <Remove_Turf />,
         },
 
+        
         // User Section
         {
           path: '/user',

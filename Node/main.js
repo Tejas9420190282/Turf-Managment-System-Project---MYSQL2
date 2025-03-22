@@ -19,6 +19,9 @@ const { payment_Router } = require("./Router/User/Payment_Router");
 const { verifyPaymentRouter } = require("./Router/User/verify_Payment_Router");
 const { generate_PDF_Router } = require("./Router/User/Generate_PDF_Router");
 const { View_Booking_Using_Player_Id_Router } = require("./Router/User/View_Booking_Using_Player_Id_Router");
+const { forget_Password_Router } = require("./Router/forgot_Password_Router");
+const { reset_Password_Router } = require("./Router/reset_Password_Router");
+const { get_Reset_Password_Page_Router } = require("./Router/get_Reset_Password_Page_Router");
 
 
 
@@ -28,9 +31,13 @@ app.use(cors({ origin: "http://localhost:5173", credential: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+
 app.use(signUp_Router);
 app.use(login_Router);
-
+app.use(forget_Password_Router);
+app.use(reset_Password_Router);
+app.use(get_Reset_Password_Page_Router)
 
 // Admin
 app.use(Add_Turf_Submit_Router);

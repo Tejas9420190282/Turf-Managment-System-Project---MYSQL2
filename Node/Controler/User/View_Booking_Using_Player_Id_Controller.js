@@ -6,7 +6,7 @@ const { mySqlConnectionPool } = require("../../Config/Db");
 const View_Booking_Using_Player_Id_Controller = async (req, res) => {
 
     try {
-        const {sloteId, turfId} = req.body;
+        const {sloteId, turfId} = req.query;
 
         if (!sloteId || !turfId) {
 

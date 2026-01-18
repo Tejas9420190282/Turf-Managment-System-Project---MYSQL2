@@ -55,7 +55,7 @@ function Search_Available_Turf() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="p-4 space-y-4">
+            <form onSubmit={handleSubmit} className="p-4 space-y-4 ">
                 <input
                     type="text"
                     id="city"
@@ -64,7 +64,7 @@ function Search_Available_Turf() {
                     onChange={(e) => setCity(e.target.value)}
                     required
                     placeholder="Enter City"
-                    className="border p-2 rounded-md"
+                    className="border p-2 rounded-md mr-10"
                 />
 
                 <input
@@ -75,7 +75,7 @@ function Search_Available_Turf() {
                     onChange={(e) => setArea(e.target.value)}
                     required
                     placeholder="Enter Area"
-                    className="border p-2 rounded-md"
+                    className="border p-2 rounded-md mr-10"
                 />
 
                 <input
@@ -90,7 +90,7 @@ function Search_Available_Turf() {
 
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md mr-10"
                 >
                     Find Turf
                 </button>
@@ -102,7 +102,7 @@ function Search_Available_Turf() {
                     <h2 className="text-lg font-bold">Available Turfs</h2>
                     <table className="border-collapse border border-gray-400 w-full mt-2">
                         <thead>
-                            <tr className="bg-gray-200">
+                            <tr className="bg-gray-200 ">
                                 <th className="border p-2">Turf Name</th>
                                 <th className="border p-2">City</th>
                                 <th className="border p-2">Area</th>

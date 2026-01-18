@@ -44,7 +44,7 @@ const signUp_Controller = async (req, res) => {
         console.log("Account SignUp Successfully".bgGreen);
         
 
-        res.status(201).json({  // 201 ===> created
+        return res.status(201).json({  // 201 ===> created
 
             success : true,
             message : "Account SignUp Successfully",
